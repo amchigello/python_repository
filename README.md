@@ -1,1 +1,1 @@
-# python_repository
+# This repository contains Python practices
