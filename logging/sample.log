@@ -1,0 +1,6 @@
+2018-12-12 19:49:37,326|__main__:Divison by zero:ERROR
+2018-12-12 19:49:37,326|__main__:Divison by zero:ERROR
+Traceback (most recent call last):
+  File "/Users/nayak/repositories/python_repository/logging/calculate_log.py", line 34, in div_num
+    result = a / b
+ZeroDivisionError: division by zero

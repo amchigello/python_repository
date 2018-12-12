@@ -12,7 +12,19 @@ import logging
 
 # Atrributes of logging - https://docs.python.org/3/library/logging.html#logrecord-attributes
 
-logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+formatter = logging.Formatter('%(name)s:%(message)s:%(levelname)s')
+file_handler = logging.FileHandler('/Users/nayak/repositories/python_repository/logging/product_logs.log')
+
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.INFO)
+
+
+# logging.basicConfig(filename='/Users/nayak/repositories/python_repository/logging/product_logs.log',
+#                     level=logging.INFO,
+#                     format='%(name)s:%(message)s:%(levelname)s',
+#                     filemode='a')
 
 
 class ProductInventory:
@@ -22,19 +34,18 @@ class ProductInventory:
         self.product_name = product_name
         self.items_in_stock = items_in_stock
         self.price = price
-        logging.debug("Product {} created with Rs. {} per piece. Total {} in inventory is {}"
-                      .format(self.product_name, self.price, self.product_name, self.items_in_stock))
+        logger.info("Product {} created with Rs. {} per piece. Total {} in inventory is {}"
+                    .format(self.product_name, self.price, self.product_name, self.items_in_stock))
 
     def sell(self, units):
         self.items_in_stock = self.items_in_stock - units
         bill_amount = self.price * units
-        logging.debug("Revenue from {} {} is: {}".format(units, self.product_name, bill_amount))
-        logging.debug("Number of {} left in the inventory is: {}".format(self.product_name, self.items_in_stock))
+        logger.info("Revenue from {} {} is: {}".format(units, self.product_name, bill_amount))
+        logger.info("Number of {} left in the inventory is: {}".format(self.product_name, self.items_in_stock))
 
     def add(self, units):
-        self.items_in_stock = self.items_in_stock + units
-        logging.debug("{} units of {} added to inventory".format(units, self.product_name))
-        logging.debug("Number of {} left in the inventory is: {}".format(self.product_name, self.items_in_stock))
+        logger.info("{} units of {} added to inventory".format(units, self.product_name))
+        logger.info("Number of {} left in the inventory is: {}".format(self.product_name, self.items_in_stock))
 
 
 pen = ProductInventory('Pen', 10, 2)

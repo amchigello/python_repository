@@ -1,0 +1,10 @@
+__main__:Product Pen created with Rs. 2 per piece. Total Pen in inventory is 10:INFO
+__main__:Revenue from 5 Pen is: 10:INFO
+__main__:Number of Pen left in the inventory is: 5:INFO
+__main__:10 units of Pen added to inventory:INFO
+__main__:Number of Pen left in the inventory is: 5:INFO
+logging_examples:Product Pen created with Rs. 2 per piece. Total Pen in inventory is 10:INFO
+logging_examples:Revenue from 5 Pen is: 10:INFO
+logging_examples:Number of Pen left in the inventory is: 5:INFO
+logging_examples:10 units of Pen added to inventory:INFO
+logging_examples:Number of Pen left in the inventory is: 5:INFO
