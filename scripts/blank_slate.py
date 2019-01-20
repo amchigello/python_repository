@@ -1,16 +1,11 @@
-import collections
+from pyspark import SparkConf, SparkContext
+conf = SparkConf().setAppName("spark_work").setMaster("local")
+sc = SparkContext(conf=conf)
 
-name = 'Panduranga'
-fruits = ['Apple', 'Orange', 'Banana', 'Grapes', 'Grapes', 'Grapes', 'Apple']
 
-print(dict(collections.Counter(name)))
-print(dict(collections.Counter(fruits)))
+num = range(1, 20)
+rdd1 = sc.parallelize(num)
 
-y={}
-for x in name:
-    if x in y:
-        y[x]+=1
-    else:
-        y[x]=1
-
-print(y)
+print("Number of partitions: {}".format(rdd.getNumPartitions()))
+print("Partitioner: {}".format(rdd.partitioner))
+print("Partitions structure: {}".format(rdd.glom().collect()))
