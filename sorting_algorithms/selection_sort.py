@@ -4,10 +4,11 @@ def selection_sort(l):
         for j in range(i + 1, len(l)):
             if l[min_idx] > l[j]:
                 min_idx = j
-        l[j], l[min_idx] = l[min_idx], l[j]
+
+        l[i], l[min_idx] = l[min_idx], l[i]
     print(l)
 
 
-arr = [1, 11, 23, 2, 6, 3, 8]
+arr = [1, 11, 1, 8, 23, 2, 6, 3, 8]
 
 selection_sort(arr)
