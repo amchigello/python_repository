@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c9c8786-9f41-4206-ab9d-65f849f0db45" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hacker_rank/athlete_sort.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hacker_rank/athlete_sort.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hacker_rank/fractions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hacker_rank/fractions.py" afterDir="false" />
     </list>
@@ -17,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/sorting_algorithms/sort_negetive.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -79,7 +80,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -96,6 +96,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -274,9 +275,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="812" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49896482" visible="true" weight="0.19957082" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49896482" visible="true" weight="0.20243205" />
       <window_info id="Structure" order="1" sideWeight="0.5010352" side_tool="true" weight="0.19098713" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -320,12 +320,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logging/product_logs.log">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="LogFileEditorProvider">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/logging/calculate_log.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -338,8 +338,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logging/sample.log">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/deep_shallow_copy.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -406,7 +406,7 @@
     <entry file="file://$PROJECT_DIR$/sorting_algorithms/sort_negetive.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
