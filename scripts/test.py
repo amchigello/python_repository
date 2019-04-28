@@ -7,8 +7,7 @@ from pyspark.sql.types import IntegerType, DecimalType
 import json
 
 incrementbyOne = Window.orderBy(lit("col"))
-spark.conf.set("fs.azure.account.key.80013adlsgen2.blob.core.windows.net",
-               "cB5QsbxOjzzhlklH0XHPRc4mk13+FwUeIGqHrNlEl7Muixho7om8I5JSepVDVtOHtPPG8RB/aehfPf7FJwXtwA==")
+
 
 
 #################
