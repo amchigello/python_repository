@@ -10,7 +10,7 @@ words_to_numbers = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
 
 def load(data_file_name):
     row_record = []
-    with open('data/'+data_file_name, 'r') as datafile:
+    with open('ETL_Auto1_Group/data/' + data_file_name, 'r') as datafile:
         file = csv.DictReader(datafile, delimiter=';')
         for line in file:
             row_record.append(dict(line))
@@ -33,7 +33,7 @@ def bad_records_filter(row):
 
 
 def write_to_csv(record_set, delimiter, output_filename):
-    with open(output_filename, 'w+') as target:
+    with open('ETL_Auto1_Group/'+output_filename, 'w+') as target:
         csv_writer = csv.writer(target, delimiter=delimiter)
         csv_writer.writerows(record_set)
 
