@@ -17,21 +17,33 @@ def load(data_file_name):
         return row_record[1:]
 
 
-def transform(rows):
-    # print(rows)
+def bad_records_filter(row):
+    if (
+        (row['engine-location'].strip() == '-') or
+        (row['num-of-cylinders'].strip() == '-') or
+        (row['engine-size'].strip() == '-') or
+        (row['weight'].strip() == '-') or
+        (row['horsepower'].strip() == '-') or
+        (row['aspiration'].strip() == '-') or
+        (row['price'].strip() == '-') or
+            (row['make'].strip() == '-')):
+        return True
+    else:
+        return False
+
+
+def write_to_csv(record_set, delimiter, output_filename):
+    with open(output_filename, 'w+') as target:
+        csv_writer = csv.writer(target, delimiter=delimiter)
+        csv_writer.writerows(record_set)
+
+
+def transform(file_name):
+    rows = load(file_name)
     final_records = []
     error_records = []
     for observation in rows:
-        if (
-            (observation['engine-location'].strip() == '-') or
-            (observation['num-of-cylinders'].strip() == '-') or
-            (observation['engine-size'].strip() == '-') or
-            (observation['weight'].strip() == '-') or
-            (observation['horsepower'].strip() == '-') or
-            (observation['aspiration'].strip() == '-') or
-            (observation['price'].strip() == '-') or
-            (observation['make'].strip() == '-')
-        ):
+        if bad_records_filter(observation) == True:
             error_records.append(rows)
             continue
         row_dict = {}
@@ -53,18 +65,16 @@ def transform(rows):
         # Logic for make
         row_dict['make'] = observation['make']
         final_records.append(row_dict)
-    return (final_records, error_records)
-
-
-def main():
-    rows = load('Challenge_me.txt')
-    output_records, bad_records = transform(rows)
-    # print('{} + {} = {}'.format(len(output_records), len(bad_records), len(rows)))
-    header = list(output_records[0].keys())
-    records = [list(row.values()) for row in output_records]
+    header = list(final_records[0].keys())
+    records = [list(row.values()) for row in final_records]
     records.insert(0, header)
-    print(records)
+    # print(records)
+    # print('{} + {} = {}'.format(len(final_records), len(error_records), len(rows)))
+    write_to_csv(records, ',', 'output.csv')
+    print("Output file generated!")
+    return records
 
 
 if __name__ == "__main__":
-    main()
+    x = transform('Challenge_me.txt')
+    print(x)
