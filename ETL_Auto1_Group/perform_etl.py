@@ -8,7 +8,7 @@ words_to_numbers = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
                     }
 
 
-def load(data_file_name,delimiter):
+def load(data_file_name, delimiter):
     row_record = []
     with open('ETL_Auto1_Group/data/' + data_file_name, 'r') as datafile:
         file = csv.DictReader(datafile, delimiter=delimiter)
@@ -38,17 +38,32 @@ def write_to_csv(record_set, delimiter, output_filename):
         csv_writer.writerows(record_set)
 
 
+def one_hot_encoding(rows, categorical_column):
+    categorical_data = [value[categorical_column].strip(
+    ) for value in rows if value[categorical_column].strip() != '-']
+    unique_categorical_data = set(categorical_data)
+    return unique_categorical_data
+
+
 def transform(file_name):
-    rows = load(file_name,';')
+    rows = load(file_name, ';')
     final_records = []
     error_records = []
+    categorical_data = one_hot_encoding(rows, "engine-location")
+    # print(categorical_data)
     for observation in rows:
         if bad_records_filter(observation) == True:
-            error_records.append(rows)
+            error_records.append(observation)
             continue
         row_dict = {}
-        # Logic for 'engine-location'
-        row_dict['engine-location'] = observation['engine-location']
+        # Logic for 'engine-location one hot encoding'
+        for values in categorical_data:
+            if values == observation['engine-location']:
+                row_dict['engine-location-' +
+                         values] = 1
+            else:
+                row_dict['engine-location-' +
+                         values] = 0
         # Logic for 'num-of-cylinders'
         row_dict['num-of-cylinders'] = words_to_numbers[observation['num-of-cylinders'].strip()]
         # Logic for engine-size
@@ -72,9 +87,9 @@ def transform(file_name):
     # print('{} + {} = {}'.format(len(final_records), len(error_records), len(rows)))
     write_to_csv(records, ',', 'output.csv')
     print("Output file generated!")
+
+    err_header = list(final_records[0].keys())
+    err_records = [list(row.values()) for row in error_records]
+    err_records.insert(0, err_header)
+    write_to_csv(err_records, ',', 'logs/bad_record.csv')
     return records
-
-
-if __name__ == "__main__":
-    x = transform('Challenge_me.txt')
-    print(x)
