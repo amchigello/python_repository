@@ -8,10 +8,10 @@ words_to_numbers = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
                     }
 
 
-def load(data_file_name):
+def load(data_file_name,delimiter):
     row_record = []
     with open('ETL_Auto1_Group/data/' + data_file_name, 'r') as datafile:
-        file = csv.DictReader(datafile, delimiter=';')
+        file = csv.DictReader(datafile, delimiter=delimiter)
         for line in file:
             row_record.append(dict(line))
         return row_record[1:]
@@ -39,7 +39,7 @@ def write_to_csv(record_set, delimiter, output_filename):
 
 
 def transform(file_name):
-    rows = load(file_name)
+    rows = load(file_name,';')
     final_records = []
     error_records = []
     for observation in rows:
