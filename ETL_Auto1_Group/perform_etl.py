@@ -1,5 +1,5 @@
 import csv
-import json
+import codecs
 
 words_to_numbers = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
                     'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10,
@@ -33,7 +33,7 @@ def bad_records_filter(row):
 
 
 def write_to_csv(record_set, delimiter, output_filename):
-    with open('ETL_Auto1_Group/'+output_filename, 'w+') as target:
+    with codecs.open('ETL_Auto1_Group/'+output_filename, 'w', encoding='utf8') as target:
         csv_writer = csv.writer(target, delimiter=delimiter)
         csv_writer.writerows(record_set)
 
