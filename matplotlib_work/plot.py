@@ -13,6 +13,7 @@ def get_country_timeline(country_code):
     dev_y = [x['new_daily_cases'] for x in list(data.values())]
     return (dev_x, dev_y, country)
 
+
 def plot_daily_cases(*countries):
     for country in countries:
         data = get_country_timeline(country)
@@ -26,5 +27,37 @@ def plot_daily_cases(*countries):
     return True
 
 
+def plot_daily_cases_bar(country_code, **kwargs):
+    first_n_days = kwargs.get('first_n_days', None)
+    last_n_days = kwargs.get('last_n_days', None)
+    data = get_country_timeline(country_code)
+
+    if (first_n_days != None):
+        y_axis = data[1][:first_n_days]
+        xlabel = "First {} days".format(first_n_days)
+    elif (last_n_days != None):
+        y_axis = data[1][-last_n_days:]
+        xlabel = "Last {} days".format(last_n_days)
+    else:
+        y_axis = data[1]
+        xlabel = "Days since the first case"
+
+    x_axis = range(len(y_axis))
+    label = data[2]
+    plt.bar(x_axis, y_axis, label=label)
+    plt.legend()
+    plt.grid()
+    plt.title("Daily Coronavirus count")
+    plt.xlabel(xlabel)
+    plt.ylabel("Case count per day")
+    plt.show()
+    return True
+
+
+def main():
+    # plot_daily_cases("IN", "GB")
+    plot_daily_cases_bar("IN", last_n_days=30)
+
+
 if __name__ == "__main__":
-    plot_daily_cases("IN","GB")
+    main()
